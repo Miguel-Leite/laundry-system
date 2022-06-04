@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Interfaces\IAuth;
+use App\Mail\UserSendMail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -43,8 +45,9 @@ class AuthController extends Controller implements IAuth
             $avatarName = Str::of($request->name)->slug('-'). uniqid('-', true) . '.' . $request->avatar->getClientOriginalExtension();
             $avatar = $request->avatar->storeAs('assets/img/users',$avatarName);
             $data['avatar'] = $avatar;
-            $data['password'] = '000000';
+            $data['password'] = rand(999,999999);
             $user = User::create($data);
+            Mail::to($user->email)->send(new UserSendMail($user,['subject'=>'Bem-vindo ao sistema','view'=>'sendMailUserPasssword','password'=> $data['password']]));
             if ($user) redirect()->back()->with('success','Adicionado com sucesso!');
             if (Storage::exists($avatar)) Storage::delete($avatar);
             return redirect()->back()->with('danger','Não foi possível adicionar o usuario!');
