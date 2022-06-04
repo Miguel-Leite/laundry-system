@@ -20,4 +20,9 @@ class PagesController extends Controller
     {
         return view("pages.index");
     }
+
+    public function userCreate()
+    {
+        return view("pages.user.create");
+    }
 }
