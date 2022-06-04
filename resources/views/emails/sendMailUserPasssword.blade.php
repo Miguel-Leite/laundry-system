@@ -1,12 +1,20 @@
 @component('mail::message')
-# Introduction
+## Ola, {{ $user->name }}! 
+<p>
+    Seja bem-vindo ao sistema, enviamos este e-mail para informar 
+    a sua senha da sua conta de usuario.
+</p>
 
-The body of your message.
+### Senha: <b>{{ $options['password'] }}</b>
 
-@component('mail::button', ['url' => ''])
-Button Text
+<p>
+    CLica no botão abaixo para entrar no sistema.
+</p>
+
+@component('mail::button', ['url' => route('pages.index')])
+Entrar
 @endcomponent
 
-Thanks,<br>
+### Obrigado,<br>
 {{ config('app.name') }}
 @endcomponent
