@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{{ asset('assets/vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" />
   </head>
 <body>
 
@@ -84,7 +83,7 @@
               </a>
               <div class="collapse" id="ui-register">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="#">Usuarios</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{ route('pages.userCreate') }}">Usuarios</a></li>
                   <li class="nav-item"> <a class="nav-link" href="#">Tecidos</a></li>
                 </ul>
               </div>
@@ -116,13 +115,6 @@
               <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                 <span class="mdi mdi-menu"></span>
               </button>
-              <ul class="navbar-nav w-100">
-                <li class="nav-item w-100">
-                  <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                    <input type="text" class="form-control" placeholder="Search products">
-                  </form>
-                </li>
-              </ul>
               <ul class="navbar-nav navbar-nav-right">
                 <li class="nav-item dropdown">
                   <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
@@ -189,6 +181,8 @@
 
     <!-- plugins:js -->
     <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
+    <!-- Plugin js for this page -->
+    <script src="{{ asset('assets/vendors/chart.js/Chart.min.js') }}"></script>
     <!-- endinject -->
     <script src="{{ asset('assets/js/off-canvas.js') }}"></script>
     <script src="{{ asset('assets/js/hoverable-collapse.js') }}"></script>
@@ -196,5 +190,11 @@
     <script src="{{ asset('assets/js/settings.js') }}"></script>
     <script src="{{ asset('assets/js/todolist.js') }}"></script>
     <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="{{ asset('assets/js/chart.js') }}"></script>
+    <script src="{{ asset('assets/js/file-upload.js') }}"></script>
+    <script src="{{ asset('assets/js/typeahead.js') }}"></script>
+    <script src="{{ asset('assets/js/select2.js') }}"></script>
+    <!-- End custom js for this page -->
   </body>
 </html>
