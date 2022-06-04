@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[PagesController::class,'index']);
+Route::get('/',[PagesController::class,'index'])->name('pages.index');
+Route::get('/recuperar-senha',[PagesController::class,'forgotPassword'])->name('pages.forgotPassword');
