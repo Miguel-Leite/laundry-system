@@ -14,24 +14,24 @@
     <div class="container-scroller">
       <div class="container-fluid page-body-wrapper full-page-wrapper">
         <div class="row w-100 m-0">
-          <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+          <div class="content-wrapper full-page-wrapper d-flex align-items-center auth forgot-password-bg">
             <div class="card col-lg-4 mx-auto">
               <div class="card-body px-5 py-5">
-                <h3 class="card-title text-left mb-3">Login</h3>
+                <h3 class="card-title text-left mb-3" 
+                style="text-transform: none!important">
+                Esqueceste a sua senha?</h3>
+                <p class="text-justify">
+                    Para recuperar a sua senha, informa o seu e-mail para poder
+                    receber o link de redifinição de senha no seu e-mail.
+                </p>
+                <br>
                 <form>
                   <div class="form-group">
                     <label>E-mail *</label>
-                    <input type="text" class="form-control p_input">
-                  </div>
-                  <div class="form-group">
-                    <label>Senha *</label>
-                    <input type="text" class="form-control p_input">
-                  </div>
-                  <div class="form-group d-flex align-items-center justify-content-between">
-                    <a href="{{ route('pages.forgotPassword') }}" class="forgot-pass">Esqueci a senha.</a>
+                    <input type="text" name="email" class="form-control p_input">
                   </div>
                   <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-block enter-btn">Entrar</button>
+                    <button type="submit" class="btn btn-primary btn-block enter-btn">Enviar</button>
                   </div>
                 </form>
               </div>
