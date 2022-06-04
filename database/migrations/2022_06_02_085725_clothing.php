@@ -17,10 +17,10 @@ class Clothing extends Migration
             $table->id();
             $table->string("name");
             $table->text("description")->nullable();
-            $table->string("color");
-            $table->integer("size");
-            $table->boolean("iron");
-            $table->string("image");
+            $table->string("color")->nullable();
+            $table->integer("size")->nullable();
+            $table->boolean("iron")->nullable();
+            $table->string("image")->nullable();
             $table->foreignId('users_id')->constrained()->cascadeOnDelete();
             $table->foreignId('fabrics_id')->constrained()->cascadeOnDelete();
             $table->foreignId('categories_id')->constrained()->cascadeOnDelete();

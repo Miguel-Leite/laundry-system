@@ -17,7 +17,7 @@ class Service extends Migration
             $table->id();
             $table->string("name");
             $table->text("description")->nullable();
-            $table->decimal("price",10);
+            $table->decimal("price",10)->nullable();
             $table->timestamps();
         });
     }
