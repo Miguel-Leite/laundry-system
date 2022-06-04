@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,4 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[PagesController::class,'index'])->name('pages.index');
+Route::post('/',[AuthController::class,'login'])->name('pages.index');
 Route::get('/recuperar-senha',[PagesController::class,'forgotPassword'])->name('pages.forgotPassword');
+
+Route::middleware('authentication')->group(function (){
+    Route::get('/home',[PagesController::class,'home'])->name('pages.home');
+    Route::get('/users/create',[PagesController::class,'userCreate'])->name('pages.userCreate');
+    Route::post('/users/create',[AuthController::class,'create'])->name('pages.userCreate');
+});
