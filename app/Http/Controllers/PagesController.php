@@ -8,6 +8,16 @@ class PagesController extends Controller
 {
     public function index()
     {
-        return view("pages.auth.login");
+        return view("pages.index");
+    }
+
+    public function forgotPassword()
+    {
+        return view("pages.auth.forgot-password");
+    }
+
+    public function home()
+    {
+        return view("pages.index");
     }
 }
