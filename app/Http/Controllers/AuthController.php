@@ -47,8 +47,8 @@ class AuthController extends Controller implements IAuth
             $data['avatar'] = $avatar;
             $data['password'] = rand(999,999999);
             $user = User::create($data);
-            Mail::to($user->email)->send(new UserSendMail($user,['subject'=>'Bem-vindo ao sistema','view'=>'sendMailUserPasssword','password'=> $data['password']]));
-            if ($user) redirect()->back()->with('success','Adicionado com sucesso!');
+            Mail::to($user->email)->send(new UserSendMail($user,['subject'=>'Bem-vindo ao sistema','view'=>'emails.sendMailUserPasssword','password'=> $data['password']]));
+            if ($user) return redirect()->back()->with('success','Adicionado com sucesso!');
             if (Storage::exists($avatar)) Storage::delete($avatar);
             return redirect()->back()->with('danger','Não foi possível adicionar o usuario!');
         }

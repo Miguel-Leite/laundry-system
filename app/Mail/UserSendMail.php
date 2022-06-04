@@ -35,7 +35,7 @@ class UserSendMail extends Mailable
      */
     public function build()
     {
-        return $this->from(env('MAIL_USERNAME'),'ATIWA FINANÇAS')
+        return $this->from(env('MAIL_USERNAME'),'SISTEMA DE LAVANDARIA')
                     ->subject($this->options['subject'])
                     ->markdown($this->options['view'])
                     ->with([
