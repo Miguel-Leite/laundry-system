@@ -18,14 +18,20 @@
             <div class="card col-lg-4 mx-auto">
               <div class="card-body px-5 py-5">
                 <h3 class="card-title text-left mb-3">Login</h3>
-                <form>
+                @if (session()->has('danger'))
+                    <div class="alert alert-danger">
+                        <strong>Falha: </strong>{{ session()->get('danger') }}
+                    </div>
+                @endif
+                <form method="POST" action="{{ route('pages.index') }}">
+                  @csrf
                   <div class="form-group">
                     <label>E-mail *</label>
-                    <input type="text" class="form-control p_input">
+                    <input type="text" name="email" class="form-control p_input">
                   </div>
                   <div class="form-group">
                     <label>Senha *</label>
-                    <input type="text" class="form-control p_input">
+                    <input type="password" name="password" class="form-control p_input">
                   </div>
                   <div class="form-group d-flex align-items-center justify-content-between">
                     <a href="{{ route('pages.forgotPassword') }}" class="forgot-pass">Esqueci a senha.</a>
