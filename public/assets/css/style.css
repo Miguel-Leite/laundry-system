@@ -20199,6 +20199,11 @@ div.tagsinput {
   background-size: cover; 
   background-position: center;}
 
+.auth.forgot-password-bg {
+  background: url("../images/auth/forgot-password.jpg");
+  background-size: cover; 
+  background-position: center;}
+
 .auth .login-half-bg {
   background: url("../images/auth/login-bg.jpg");
   background-size: cover; }
