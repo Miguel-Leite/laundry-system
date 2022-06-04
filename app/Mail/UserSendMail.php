@@ -39,7 +39,8 @@ class UserSendMail extends Mailable
                     ->subject($this->options['subject'])
                     ->markdown($this->options['view'])
                     ->with([
-                        'user' => $this->user
+                        'user' => $this->user,
+                        'options' => $this->options
                     ]);
     }
 }
