@@ -37,7 +37,6 @@ class AuthController extends Controller implements IAuth
      */
     public function create(Request $request)
     {
-        // $request->validate([]);
         $data = $request->all();
         $data['isEmployee'] = 1;
         $data['isAdmin'] = (isset($data['isAdmin']) ? 1 : 0);
@@ -64,7 +63,21 @@ class AuthController extends Controller implements IAuth
      */
     public function update(Request $request, int $id)
     {
-        
+        $data = $request->all();
+        $user = User::find($id);
+        if (!$user) {
+            return redirect()->back()->with('danger','Não foi encontrar o usuario!');
+        }
+        if ($request->avatar && $request->avatar->isValid()){
+            if (Storage::exists($user->avatar)) Storage::delete($user->avatar);
+            $avatarName = Str::of($request->name)->slug('-'). uniqid('-', true) . '.' . $request->avatar->getClientOriginalExtension();
+            $avatar = $request->avatar->storeAs('assets/img/users',$avatarName);
+            $data['avatar'] = $avatar;
+        }
+        Mail::to($user->email)->send(new UserSendMail($user,['subject'=>'Actualização dos dados pessoas',
+        'view'=>'emails.sendMailUserUpdate']));
+        $user->update($data);
+        return redirect()->back()->with('success','Atualizado com sucesso!');
     }
 
     /**
@@ -75,7 +88,12 @@ class AuthController extends Controller implements IAuth
      */
     public function delete(User $user)
     {
-        
+        if (!$user) {
+            return redirect()->back()->with('danger','Não foi encontrar o usuario!');
+        }
+        if (Storage::exists($user->avatar)) Storage::delete($user->avatar);
+        $user->delete();
+        return redirect()->back()->with('success','Removido com sucesso!');
     }
 
     /**
@@ -85,6 +103,7 @@ class AuthController extends Controller implements IAuth
      */
     public function logout()
     {
-        
+        Auth::logout();
+        return redirect()->route('pages.index');        
     }
 }
