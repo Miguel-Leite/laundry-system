@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Interfaces\IServices;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
-class ServiceController extends Controller implements IServices
+class ServiceController extends Controller
 {
     /**
      * function create
@@ -17,8 +16,8 @@ class ServiceController extends Controller implements IServices
     public function create(Request $request)
     {
         $service = Service::create($request->all());
-        if ($service) return redirect()->back()->with('success','Adicionado com sucesso!');
-        return redirect()->back()->with('danger','Não foi possível adicionar o serviço!');
+        if ($service) return redirect(null,201)->route('pages.serviceCreate')->with('success','Adicionado com sucesso!');
+        return redirect(null,403)->route('pages.serviceCreate')->with('danger','Não foi possível adicionar o serviço!');
     }
 
     /**

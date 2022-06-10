@@ -49,5 +49,5 @@ interface IAuth
      *
      * @return void
      */
-    public function logout();
+    public function logout(Request $request);
 }

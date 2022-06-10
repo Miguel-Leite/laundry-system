@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 /**
  * interface services
  */
-interface IServices
+interface IServicesRepository
 {
     /**
      * function create

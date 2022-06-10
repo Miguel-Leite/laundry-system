@@ -24,6 +24,7 @@ class AuthController extends Controller implements IAuth
     public function login(Request $request)
     {
         if(Auth::attempt(['email'=> $request->email,'password'=> $request->password])){
+            $request->session()->regenerate();
             return redirect()->route('pages.home')->with('success','Usuario logado com sucesso!');
         }
         return redirect()->back()->with('danger','Não foi possível fazer o login. E-mail ou senha inválidas!');
@@ -44,7 +45,7 @@ class AuthController extends Controller implements IAuth
             $avatarName = Str::of($request->name)->slug('-'). uniqid('-', true) . '.' . $request->avatar->getClientOriginalExtension();
             $avatar = $request->avatar->storeAs('assets/img/users',$avatarName);
             $data['avatar'] = $avatar;
-            $data['password'] = rand(999,999999);
+            $data['password'] = password_hash(rand(999,999999),PASSWORD_DEFAULT);
             $user = User::create($data);
             Mail::to($user->email)->send(new UserSendMail($user,['subject'=>'Bem-vindo ao sistema','view'=>'emails.sendMailUserPasssword','password'=> $data['password']]));
             if ($user) return redirect()->back()->with('success','Adicionado com sucesso!');
@@ -101,9 +102,12 @@ class AuthController extends Controller implements IAuth
      *
      * @return void
      */
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
+        $request->session()->invalidate();
+ 
+        $request->session()->regenerateToken();
         return redirect()->route('pages.index');        
     }
 }

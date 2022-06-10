@@ -25,4 +25,9 @@ class PagesController extends Controller
     {
         return view("pages.user.create");
     }
+
+    public function serviceCreate()
+    {
+        
+    }
 }
