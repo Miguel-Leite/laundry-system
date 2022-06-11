@@ -31,8 +31,8 @@ interface IFabrics
     /**
      * function delete
      *
-     * @param Service $service
+     * @param int $id
      * @return void
      */
-    public function delete(Fabric $service);
+    public function delete(int $id);
 }
