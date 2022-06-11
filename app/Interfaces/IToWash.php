@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 interface IToWash
 {
+    public function serializer_data(array $data): array;
     /**
      * function create
      *
