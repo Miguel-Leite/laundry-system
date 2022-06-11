@@ -28,8 +28,15 @@
               <div class="profile-desc">
                 <div class="profile-pic">
                   <div class="count-indicator">
-                    <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg" alt="">
-                    <span class="count bg-success"></span>
+                    
+                    {{-- <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg" alt=""> --}}
+                    <img class="img-xs rounded-circle" src="
+                      @if (!empty(auth()->user()->avatar))
+                      {{auth()->user()->avatar}}
+                      @else
+                      assets/images/faces/face15.jpg
+                      @endif
+                      " alt="{{ auth()->user()->name }}">
                   </div>
                   <div class="profile-name">
                     <h5 class="mb-0 font-weight-normal">Miguel Leite</h5>
@@ -84,7 +91,9 @@
               <div class="collapse" id="ui-register">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{ route('pages.userCreate') }}">Usuarios</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="#">Categoria</a></li>
                   <li class="nav-item"> <a class="nav-link" href="#">Tecidos</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="#">Serviços</a></li>
                 </ul>
               </div>
             </li>
@@ -99,7 +108,9 @@
               <div class="collapse" id="ui-list">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="#">Usuarios</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="#">Categoria</a></li>
                   <li class="nav-item"> <a class="nav-link" href="#">Tecidos</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="#">Serviços</a></li>
                 </ul>
               </div>
             </li>
@@ -119,8 +130,14 @@
                 <li class="nav-item dropdown">
                   <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                     <div class="navbar-profile">
-                      <img class="img-xs rounded-circle" src="assets/images/faces/face15.jpg" alt="">
-                      <p class="mb-0 d-none d-sm-block navbar-profile-name">Miguel Leite</p>
+                      <img class="img-xs rounded-circle" src="
+                      @if (!empty(auth()->user()->avatar))
+                      {{auth()->user()->avatar}}
+                      @else
+                      assets/images/faces/face15.jpg
+                      @endif
+                      " alt="{{ auth()->user()->name }}">
+                      <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ auth()->user()->name }}</p>
                       <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                     </div>
                   </a>
