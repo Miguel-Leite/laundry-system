@@ -20,7 +20,7 @@ class ToWash extends Migration
             $table->date('returnned_to_the_client_date');
             $table->decimal('total',10);
             $table->decimal('total_paid',10);
-            $table->foreignId('users_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('clients_id')->constrained()->cascadeOnDelete();
             $table->foreignId('clothings_id')->constrained()->cascadeOnDelete();
             $table->foreignId('services_id')->constrained()->cascadeOnDelete();
             $table->timestamps();

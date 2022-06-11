@@ -21,7 +21,7 @@ class Clothing extends Migration
             $table->integer("size")->nullable();
             $table->boolean("iron")->nullable();
             $table->string("image")->nullable();
-            $table->foreignId('users_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('clients_id')->constrained()->cascadeOnDelete();
             $table->foreignId('fabrics_id')->constrained()->cascadeOnDelete();
             $table->foreignId('categories_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
