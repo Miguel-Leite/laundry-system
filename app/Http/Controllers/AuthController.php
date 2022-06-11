@@ -75,8 +75,9 @@ class AuthController extends Controller implements IAuth
             $avatar = $request->avatar->storeAs('assets/img/users',$avatarName);
             $data['avatar'] = $avatar;
         }
-        Mail::to($user->email)->send(new UserSendMail($user,['subject'=>'Actualização dos dados pessoas',
-        'view'=>'emails.sendMailUserUpdate']));
+        $data['isAdmin'] = (isset($data['isAdmin']) ? 1 : 0);
+        // Mail::to($user->email)->send(new UserSendMail($user,['subject'=>'Actualização dos dados pessoas',
+        // 'view'=>'emails.sendMailUserUpdate']));
         $user->update($data);
         return redirect()->back()->with('success','Atualizado com sucesso!');
     }
