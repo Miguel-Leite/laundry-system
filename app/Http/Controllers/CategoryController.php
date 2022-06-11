@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\ICategories;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class CategoryController extends Controller implements ICategories
 {
-    public function storage(Request $request)
+    public function create(Request $request)
     {
         $category = Category::create($request->all());
         if ($category) return redirect()->back()->with('success','Categoria adicionada com sucesso!');
