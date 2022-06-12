@@ -4,8 +4,17 @@ namespace App\Interfaces;
 
 use Illuminate\Http\Request;
 
+/**
+ * interface IToWash
+ */
 interface IToWash
 {
+    /**
+     * function serializer_data
+     *
+     * @param array $data
+     * @return array
+     */
     public function serializer_data(array $data): array;
     /**
      * function create
