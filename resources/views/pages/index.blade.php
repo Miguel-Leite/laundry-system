@@ -85,8 +85,8 @@
   <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Gráfico das vendas mensais</h4>
-        <canvas id="lineChart" style="height:250px"></canvas>
+        <h4 class="card-title">Gráfico dos pagamentos mensais</h4>
+        <canvas id="areaChart" style="height:250px"></canvas>
       </div>
     </div>
   </div>
