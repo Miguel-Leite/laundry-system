@@ -15,7 +15,7 @@ class ToWashController extends Controller implements IToWash
         $data = $this->serializer_data($request->all());
         $towash = ToWash::create($data);
         if ($towash) return redirect()->back()->with('success','Lavagem adicionado com sucesso!');
-        return redirect()->back()->with('danger','Não foi possível adicionar a lavagem!');
+        return redirect()->back()->with('danger','Não foi adicionar a lavagem!');
     }
 
     public function update(Request $request, int $id)
