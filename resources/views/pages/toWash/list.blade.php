@@ -17,20 +17,20 @@
                               <th>Cliente</th>
                               <th>Vestuario</th>
                               <th>Serviço</th>
-                              <th>Total</th>
+                              <th>Total (AKZ)</th>
                               <th></th>
                           </tr>
                       </thead>
                       <tbody>
                           @foreach ($toWashs as $toWash)
                           <tr>
-                              <td>{{ $toWash->start_date }}</td>
-                              <td>{{ $toWash->end_date }}</td>
-                              <td>{{ $toWash->returnned_to_the_client_date }}</td>
+                              <td>{{ date_utils($toWash->start_date) }}</td>
+                              <td>{{ date_utils($toWash->end_date) }}</td>
+                              <td>{{ date_utils($toWash->returnned_to_the_client_date) }}</td>
                               <td>{{ $toWash->clientname }}</td>
                               <td>{{ $toWash->clothingname }}</td>
                               <td>{{ $toWash->servicename }}</td>
-                              <td>{{ $toWash->total }}</td>
+                              <td>{{ formatAmount_utils($toWash->total) }}</td>
                               <td>
                                   <a href="#" class="btn btn-primary" title="Imprimir comprovativo"> <i class="mdi mdi-printer"></i> </a>
                                   <a href="#" class="btn btn-info"  title="Editar encomenda"> <i class="mdi mdi-lead-pencil"></i> </a>
