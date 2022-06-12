@@ -7,6 +7,7 @@ use App\Http\Controllers\FabricController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ToWashController;
+use App\Models\ToWash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,4 +55,8 @@ Route::middleware('authentication')->group(function (){
     Route::get('/towashs',[PagesController::class,'toWashList'])->name('pages.toWashList');
     Route::get('/towash/create',[PagesController::class,'toWashCreate'])->name('pages.toWashCreate');
     Route::post('/towash/create',[ToWashController::class,'create'])->name('pages.toWashCreate');
+
+    Route::get('/get/paymants/months/day',function () {
+        return json_encode(ToWash::getPaymantsMonthlyToDay());
+    });
 });
