@@ -20,9 +20,10 @@ class ToWashController extends Controller implements IToWash
 
     public function update(Request $request, int $id)
     {
+        $data = $this->serializer_data($request->all());
         $towash = ToWash::find($id);
         if (!$towash) return redirect()->back()->with('danger','Não foi possível localizar a lavagem!');
-        $towash->update($request->all());
+        $towash->update($data);
         return redirect()->back()->with('success','Lavagem actualizado com sucesso!');
     }
 
